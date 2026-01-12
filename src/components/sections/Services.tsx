@@ -4,7 +4,7 @@ import React from 'react';
 import { Grid, Row, Col, Panel } from 'rsuite';
 import { mockData } from '@/data/mockData';
 import { Code, Cpu, Cloud, Palette } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 const iconMap: Record<string, any> = {
   Code: <Code className="w-10 h-10 text-primary" />,
@@ -13,7 +13,7 @@ const iconMap: Record<string, any> = {
   Design: <Palette className="w-10 h-10 text-primary" />,
 };
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -23,7 +23,7 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
