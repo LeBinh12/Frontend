@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { Nav, Navbar, Drawer } from 'rsuite';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './LanguageSwitcher';
 import { mockData } from '@/data/mockData';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -12,6 +14,7 @@ const Header = () => {
   const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { scrollY } = useScroll();
+  const { t } = useTranslation();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -24,11 +27,11 @@ const Header = () => {
   });
 
   const menuItems = [
-    { label: 'Services', href: '#services' },
-    { label: 'Projects', href: '#portfolio' },
-    { label: 'Team', href: '#team' },
-    { label: 'About Us', href: '#about' },
-    { label: 'Impact', href: '#stats' },
+    { label: t('nav.services'), href: '/#services' },
+    { label: t('nav.portfolio'), href: '/#portfolio' },
+    { label: t('nav.team'), href: '/#team' },
+    { label: t('nav.about'), href: '/#about' },
+    { label: t('nav.impact'), href: '/#stats' },
   ];
 
   return (
@@ -46,33 +49,43 @@ const Header = () => {
           <Navbar appearance="subtle" className="bg-transparent! flex items-center">
             <div className="flex-1">
               <Navbar.Brand as={Link} href="/" className="p-0!">
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center font-bold text-xl text-white">
-                    A
-                  </div>
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 2.2 }}
+                  className="flex items-center gap-2"
+                >
+                  <motion.div 
+                    whileHover={{ scale: 1.05, rotate: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center font-bold text-xl text-white shadow-lg shadow-primary/20"
+                  >
+                    L
+                  </motion.div>
                   <span className="font-display font-bold text-xl tracking-tight hidden sm:block">
                     {mockData.company.name}
                   </span>
-                </div>
+                </motion.div>
               </Navbar.Brand>
             </div>
             
             <div className="hidden md:flex justify-center flex-2">
               <Nav className="flex items-center">
-                <Nav.Item as={Link} href="#services">Services</Nav.Item>
-                <Nav.Item as={Link} href="#portfolio">Projects</Nav.Item>
-                <Nav.Item as={Link} href="#team">Team</Nav.Item>
-                <Nav.Menu title="Company">
-                  <Nav.Item as={Link} href="#about">About Us</Nav.Item>
-                  <Nav.Item as={Link} href="#stats">Impact</Nav.Item>
+                <Nav.Item as={Link} href="/#services">{t('nav.services')}</Nav.Item>
+                <Nav.Item as={Link} href="/#portfolio">{t('nav.portfolio')}</Nav.Item>
+                <Nav.Item as={Link} href="/#team">{t('nav.team')}</Nav.Item>
+                <Nav.Menu title={t('nav.company')}>
+                  <Nav.Item as={Link} href="/#about">{t('nav.about')}</Nav.Item>
+                  <Nav.Item as={Link} href="/#stats">{t('nav.impact')}</Nav.Item>
                 </Nav.Menu>
               </Nav>
             </div>
             
             <div className="flex-1 flex justify-end items-center gap-4">
-              <div className="hidden md:block">
-                <Link href="#contact" className="rs-btn rs-btn-primary rs-btn-md font-bold px-6 rounded-full transition-transform active:scale-95">
-                  Get Started
+              <div className="hidden md:flex items-center gap-4">
+                <LanguageSwitcher />
+                <Link href="/contact" className="rs-btn rs-btn-primary rs-btn-md font-bold px-6 rounded-full transition-transform active:scale-95">
+                  {t('nav.contact')}
                 </Link>
               </div>
               <button 
@@ -95,10 +108,14 @@ const Header = () => {
         size="full"
       >
         <Drawer.Header className="border-b border-white/5! p-6!">
-          <Drawer.Title className="text-white! font-display font-bold">Menu</Drawer.Title>
+          <Drawer.Title className="text-white! font-display font-bold">{t('nav.menu')}</Drawer.Title>
         </Drawer.Header>
         <Drawer.Body className="p-6! bg-bg-dark">
           <div className="flex flex-col gap-6 mt-8">
+            <div className="flex justify-between items-center mb-4">
+               <span className="text-text-muted text-sm font-bold uppercase tracking-widest">Select Language</span>
+               <LanguageSwitcher />
+            </div>
             {menuItems.map((item) => (
               <Link 
                 key={item.label} 
@@ -111,11 +128,11 @@ const Header = () => {
             ))}
             <div className="mt-8 pt-8 border-t border-white/5">
               <Link 
-                href="#contact" 
+                href="/contact" 
                 className="rs-btn rs-btn-primary rs-btn-lg w-full font-bold rounded-xl"
                 onClick={() => setMobileOpen(false)}
               >
-                Get Started
+                {t('nav.contact')}
               </Link>
             </div>
           </div>

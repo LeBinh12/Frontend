@@ -4,8 +4,13 @@ import React from 'react';
 import { Button, Grid, Row, Col } from 'rsuite';
 import { mockData } from '@/data/mockData';
 import HeroScene from '../canvas/HeroScene';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden" id="hero">
       <HeroScene />
@@ -13,30 +18,35 @@ const Hero = () => {
       <div className="container mx-auto px-6 relative z-10">
         <Grid fluid className="p-0!">
           <Row>
-            <Col xs={24} lg={16}>
-              <div className="max-w-3xl">
-                <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-sm tracking-wide animate-fade-in">
-                  NEXT GENERATION TECHNOLOGY
+            <Col xs={24} lg={12}>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }} // Reduced delay for faster LCP
+                className="max-w-3xl relative z-10"
+              >
+                <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-sm tracking-wide">
+                  {t('hero.badge')}
                 </div>
                 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl mb-8 leading-[1.1] tracking-tight text-white">
-                  {mockData.company.tagline.split('.')[0]}.
+                  {t('hero.title')}
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                    {mockData.company.tagline.split('.')[1]}
+                    {t('hero.highlight')}
                   </span>
                 </h1>
                 
                 <p className="text-xl md:text-2xl text-text-muted mb-10 leading-relaxed max-w-2xl">
-                  {mockData.company.description}
+                  {t('hero.description')}
                 </p>
                 
                 <div className="flex flex-wrap gap-4">
-                  <Button appearance="primary" size="lg" className="px-8 py-3 rounded-full font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/25!">
-                    Get Started
-                  </Button>
-                  <Button appearance="subtle" size="lg" className="px-8 py-3 rounded-full font-bold text-lg border border-white/10! hover:bg-white/5! transition-all">
-                    View Portfolio
+                  <Link href="/contact" className="rs-btn rs-btn-primary rs-btn-lg px-8 py-3 rounded-full font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/25!">
+                    {t('nav.contact')}
+                  </Link>
+                  <Button as={Link} href="/portfolio" appearance="subtle" size="lg" className="px-8 py-3 rounded-full font-bold text-lg border border-white/10! hover:bg-white/5! transition-all">
+                    {t('hero.viewWork')}
                   </Button>
                 </div>
                 
@@ -48,6 +58,66 @@ const Hero = () => {
                     </div>
                   ))}
                 </div>
+              </motion.div>
+            </Col>
+
+            {/* Right Side Image Composition */}
+            <Col xs={0} lg={12} className="relative !flex items-center justify-center">
+              <div className="relative w-full h-[600px] flex items-center justify-center pointer-events-none select-none">
+                
+                {/* Main Large Image */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  transition={{ duration: 1, delay: 0.2 }}
+                  className="relative z-20 w-[400px] h-[500px] rounded-[32px] overflow-hidden border-8 border-white/5 shadow-2xl shadow-primary/20 rotate-[-3deg]"
+                >
+                  <img 
+                    src={mockData.portfolio[0].image} 
+                    alt="Main Feature" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-8 left-8">
+                     <span className="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded-full mb-2">Featured</span>
+                     <h3 className="text-white font-display font-bold text-2xl">{mockData.portfolio[0].title}</h3>
+                  </div>
+                </motion.div>
+
+                {/* Floating Top Right */}
+                <motion.div
+                  initial={{ opacity: 0, y: -50, x: 50 }}
+                  animate={{ opacity: 1, y: 0, x: 0 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  className="absolute top-10 right-10 z-10 w-[220px] h-[160px] rounded-2xl overflow-hidden border-4 border-white/10 shadow-xl rotate-[6deg]"
+                >
+                  <img 
+                    src={mockData.portfolio[1].image} 
+                    alt="Floating 1" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20" />
+                </motion.div>
+
+                {/* Floating Bottom Left */}
+                <motion.div
+                  initial={{ opacity: 0, y: 50, x: -50 }}
+                  animate={{ opacity: 1, y: 0, x: 0 }}
+                  transition={{ duration: 1, delay: 0.7 }}
+                  className="absolute bottom-20 left-10 z-30 w-[180px] h-[180px] rounded-2xl overflow-hidden border-4 border-white/10 shadow-xl rotate-[-6deg]"
+                >
+                   <img 
+                    src={mockData.portfolio[2].image} 
+                    alt="Floating 2" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20" />
+                </motion.div>
+
+                 {/* Decorative Circle Elements */}
+                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full -z-10 animate-[spin_60s_linear_infinite]" />
+                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] border border-white/5 rounded-full -z-10 animate-[spin_40s_linear_infinite_reverse]" />
+
               </div>
             </Col>
           </Row>

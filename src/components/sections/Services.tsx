@@ -5,6 +5,7 @@ import { Grid, Row, Col, Panel } from 'rsuite';
 import { mockData } from '@/data/mockData';
 import { Code, Cpu, Cloud, Palette } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const iconMap: Record<string, any> = {
   Code: <Code className="w-10 h-10 text-primary" />,
@@ -33,6 +34,9 @@ const itemVariants: Variants = {
 };
 
 const Services = () => {
+  const { t } = useTranslation();
+  const serviceKeys = ['blockchain', 'ai', 'cloud', 'design'];
+
   return (
     <section className="py-24 bg-bg-card/30" id="services">
       <motion.div 
@@ -42,9 +46,9 @@ const Services = () => {
         transition={{ duration: 0.8 }}
         className="container mx-auto px-6 text-center mb-16"
       >
-        <h2 className="text-4xl md:text-5xl mb-6">Expertise That <span className="text-primary">Powers Progress</span></h2>
+        <h2 className="text-4xl md:text-5xl mb-6">{t('services.title')} <span className="text-primary">{t('services.highlight')}</span></h2>
         <p className="text-lg text-text-muted max-w-2xl mx-auto">
-          We offer a comprehensive suite of technical services designed to help your business scale and thrive in an increasingly digital world.
+          {t('services.description')}
         </p>
       </motion.div>
 
@@ -57,7 +61,7 @@ const Services = () => {
             viewport={{ amount: 0.1 }}
           >
             <Row gutter={30}>
-              {mockData.services.map((service) => (
+              {mockData.services.map((service, i) => (
                 <Col key={service.id} xs={24} md={12} lg={6} className="mb-8">
                   <motion.div variants={itemVariants}>
                     <Panel 
@@ -67,9 +71,9 @@ const Services = () => {
                       <div className="mb-6 p-4 inline-block bg-primary/5 rounded-2xl group-hover:bg-primary/10 transition-colors">
                         {iconMap[service.icon] || <Code className="w-10 h-10 text-primary" />}
                       </div>
-                      <h3 className="text-xl mb-4 group-hover:text-primary transition-colors">{service.title}</h3>
+                      <h3 className="text-xl mb-4 group-hover:text-primary transition-colors">{t(`services.${serviceKeys[i]}.title`)}</h3>
                       <p className="text-text-muted leading-relaxed">
-                        {service.description}
+                        {t(`services.${serviceKeys[i]}.description`)}
                       </p>
                     </Panel>
                   </motion.div>

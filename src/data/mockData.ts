@@ -1,8 +1,15 @@
 export const mockData = {
   company: {
-    name: "AetherFlow Tech",
-    tagline: "Fluid Innovation. Solid Solutions.",
+    name: "Lucidtech",
+    tagline: "#lucidtechvn #lucidtechnologyvn, #lctvn",
     description: "We build the next generation of decentralized applications and high-performance infrastructure for the web3 era.",
+    email: "contact@lucidtech.com",
+    phone: "+1 (555) 000-8888",
+    address: "123 Innovation Drive, Tech Valley, CA 94043",
+    images: {
+      office: "/images/office_exterior.jpg",
+      team: "/images/team_collaboration.jpg"
+    },
     stats: [
       { label: "Founded", value: "2018" },
       { label: "Engineers", value: "50+" },
@@ -37,12 +44,38 @@ export const mockData = {
     }
   ],
   technologies: [
-    { name: "React / Next.js", category: "Frontend" },
-    { name: "Node.js / Rust", category: "Backend" },
-    { name: "Solidity / Ethers.js", category: "Web3" },
-    { name: "Three.js / WebGL", category: "Graphics" },
-    { name: "Kubernetes / Terraform", category: "DevOps" },
-    { name: "Python / PyTorch", category: "AI" }
+    { name: "React", category: "Frontend" },
+    { name: "Next.js", category: "Frontend" },
+    { name: "Tailwind CSS", category: "Frontend" },
+    { name: "TypeScript", category: "Frontend" },
+    { name: "Framer Motion", category: "Frontend" },
+    { name: "Three.js", category: "Frontend" },
+    { name: "Node.js", category: "Backend" },
+    { name: "Go", category: "Backend" },
+    { name: "Rust", category: "Backend" },
+    { name: "Python", category: "Backend" },
+    { name: "PostgreSQL", category: "Backend" },
+    { name: "Redis", category: "Backend" },
+    { name: "Solidity", category: "Web3" },
+    { name: "Ethers.js", category: "Web3" },
+    { name: "Hardhat", category: "Web3" },
+    { name: "The Graph", category: "Web3" },
+    { name: "IPFS", category: "Web3" },
+    { name: "PyTorch", category: "AI & Data" },
+    { name: "TensorFlow", category: "AI & Data" },
+    { name: "Pandas", category: "AI & Data" },
+    { name: "OpenCV", category: "AI & Data" },
+    { name: "Kubernetes", category: "Cloud & DevOps" },
+    { name: "Docker", category: "Cloud & DevOps" },
+    { name: "AWS", category: "Cloud & DevOps" },
+    { name: "Azure", category: "Cloud & DevOps" },
+    { name: "Terraform", category: "Cloud & DevOps" }
+  ],
+  bigStats: [
+    { label: "Total Assets Managed", value: "$4.2B+", detail: "Growing 15% MoM" },
+    { label: "Active Network Nodes", value: "25k+", detail: "Globally Distributed" },
+    { label: "Transaction Speed", value: "< 2.5s", detail: "Industry Leading" },
+    { label: "Uptime SLA", value: "99.99%", detail: "Enterprise Grade" }
   ],
   portfolio: [
     {
@@ -56,14 +89,14 @@ export const mockData = {
       id: 2,
       title: "Vortex Analytics",
       category: "SaaS",
-      image: "https://images.unsplash.com/photo-1551288049-bbbda536639a?auto=format&fit=crop&q=80&w=800",
+      image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&q=80&w=800",
       description: "Real-time data visualization platform for enterprise marketing teams."
     },
     {
       id: 3,
       title: "Titan Marketplace",
       category: "NFT",
-      image: "https://images.unsplash.com/photo-1644363102719-30aac19ce743?auto=format&fit=crop&q=80&w=800",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200",
       description: "A premium marketplace for high-end digital collectibles and art."
     }
   ],

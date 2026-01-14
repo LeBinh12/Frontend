@@ -1,5 +1,6 @@
 'use client';
 
+import '@/i18n';
 import React from 'react';
 import { CustomProvider } from 'rsuite';
 import { Inter, Outfit } from 'next/font/google';
@@ -18,6 +19,9 @@ const outfit = Outfit({
   display: 'swap',
 });
 
+import Preloader from '@/components/common/Preloader';
+import CustomCursor from '@/components/common/CustomCursor';
+
 export default function RootLayout({
   children,
 }: {
@@ -25,8 +29,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`} suppressHydrationWarning={true}>
-      <body className="antialiased">
+      <body className="antialiased font-sans">
         <CustomProvider theme="dark">
+          <CustomCursor />
+          <Preloader />
           {children}
         </CustomProvider>
       </body>
