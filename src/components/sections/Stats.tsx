@@ -3,11 +3,19 @@
 import React from 'react';
 import { Grid, Row, Col } from 'rsuite';
 import { mockData } from '@/data/mockData';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useRef } from 'react';
 
 const Stats = () => {  
   const { t } = useTranslation();
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+  
+  const scaleLine = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
 
   const lStats = [
     { key: 'assets', val: mockData.bigStats[0].value },
@@ -19,9 +27,9 @@ const Stats = () => {
   const detailKeys = ['moM', 'distributed', 'industryLeading', 'enterpriseGrade'];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-bg-dark to-bg-card/20 relative overflow-hidden" id="stats">
+    <section ref={ref} className="py-24 bg-gradient-to-b from-bg-dark to-bg-card/20 relative overflow-hidden" id="stats">
       {/* Background Decorative Element */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <motion.div style={{ scaleX: scaleLine }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       
       <div className="container mx-auto px-6 relative z-10">
         <Grid fluid className="p-0!">

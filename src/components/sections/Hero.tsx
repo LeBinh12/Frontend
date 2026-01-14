@@ -3,26 +3,30 @@
 import React from 'react';
 import { Button, Grid, Row, Col } from 'rsuite';
 import { mockData } from '@/data/mockData';
-import HeroScene from '../canvas/HeroScene';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
   const { t } = useTranslation();
+  const { scrollY, scrollYProgress } = useScroll(); // Added scrollYProgress
+  
+  // Parallax Transforms
+  const yText = useTransform(scrollY, [0, 500], [0, 150]); // Text moves slower than scroll
+  const yImage = useTransform(scrollYProgress, [0, 1], [0, -100]); // Reduced from -200
+  const yFloating1 = useTransform(scrollYProgress, [0, 1], [0, -60]); // Reduced from -120
+  const yFloating2 = useTransform(scrollYProgress, [0, 1], [0, -150]); // Reduced from -300
+  const opacityHero = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden" id="hero">
-      <HeroScene />
       
       <div className="container mx-auto px-6 relative z-10">
         <Grid fluid className="p-0!">
           <Row>
             <Col xs={24} lg={12}>
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }} // Reduced delay for faster LCP
+                style={{ y: yText, opacity: opacityHero }}
                 className="max-w-3xl relative z-10"
               >
                 <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-sm tracking-wide">
@@ -67,9 +71,14 @@ const Hero = () => {
                 
                 {/* Main Large Image */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  transition={{ duration: 1, delay: 0.2 }}
+                  style={{ 
+                    y: yImage, 
+                    opacity: opacityHero, 
+                    willChange: 'transform',
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    transformStyle: 'preserve-3d'
+                  }}
                   className="relative z-20 w-[400px] h-[500px] rounded-[32px] overflow-hidden border-8 border-white/5 shadow-2xl shadow-primary/20 rotate-[-3deg]"
                 >
                   <img 
@@ -86,9 +95,13 @@ const Hero = () => {
 
                 {/* Floating Top Right */}
                 <motion.div
-                  initial={{ opacity: 0, y: -50, x: 50 }}
-                  animate={{ opacity: 1, y: 0, x: 0 }}
-                  transition={{ duration: 1, delay: 0.5 }}
+                  style={{ 
+                    y: yFloating1, 
+                    willChange: 'transform',
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    transformStyle: 'preserve-3d'
+                  }}
                   className="absolute top-10 right-10 z-10 w-[220px] h-[160px] rounded-2xl overflow-hidden border-4 border-white/10 shadow-xl rotate-[6deg]"
                 >
                   <img 
@@ -101,9 +114,13 @@ const Hero = () => {
 
                 {/* Floating Bottom Left */}
                 <motion.div
-                  initial={{ opacity: 0, y: 50, x: -50 }}
-                  animate={{ opacity: 1, y: 0, x: 0 }}
-                  transition={{ duration: 1, delay: 0.7 }}
+                  style={{ 
+                    y: yFloating2, 
+                    willChange: 'transform',
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    transformStyle: 'preserve-3d'
+                  }}
                   className="absolute bottom-20 left-10 z-30 w-[180px] h-[180px] rounded-2xl overflow-hidden border-4 border-white/10 shadow-xl rotate-[-6deg]"
                 >
                    <img 
@@ -114,9 +131,9 @@ const Hero = () => {
                   <div className="absolute inset-0 bg-black/20" />
                 </motion.div>
 
-                 {/* Decorative Circle Elements */}
-                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full -z-10 animate-[spin_60s_linear_infinite]" />
-                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] border border-white/5 rounded-full -z-10 animate-[spin_40s_linear_infinite_reverse]" />
+                 {/* Decorative Circle Elements - Parallaxed slightly */}
+                 <motion.div style={{ y: yFloating2 }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full -z-10 animate-[spin_60s_linear_infinite]" />
+                 <motion.div style={{ y: yFloating1 }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] border border-white/5 rounded-full -z-10 animate-[spin_40s_linear_infinite_reverse]" />
 
               </div>
             </Col>

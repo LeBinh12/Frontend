@@ -3,20 +3,28 @@
 import React from 'react';
 import { Grid, Row, Col, Tag, TagGroup } from 'rsuite';
 import { mockData } from '@/data/mockData';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useRef } from 'react';
 
 const Technologies = () => {
   const { t } = useTranslation();
   const categories = Array.from(new Set(mockData.technologies.map(t => t.category)));
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const yCards = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   return (
-    <section className="py-24 bg-bg-dark" id="technologies">
+    <section ref={ref} className="py-24 bg-bg-dark" id="technologies">
       <div className="container mx-auto px-6">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ amount: 0.3 }}
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ amount: 0.3, once: false }}
           transition={{ duration: 0.8 }}
           className="mb-16"
         >
@@ -33,10 +41,17 @@ const Technologies = () => {
             {categories.map((category, i) => (
               <Col key={category} xs={24} md={12} lg={8} className="mb-12">
                 <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ amount: 0.2 }}
-                  transition={{ delay: i * 0.1, duration: 0.6 }}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ amount: 0.2, once: false }}
+                  transition={{ delay: 0.1, duration: 0.6 }} // Unified delay
+                  style={{ 
+                    y: yCards,
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    transformStyle: 'preserve-3d',
+                    willChange: 'opacity, transform'
+                  }}
                   className="bg-bg-card/50 border border-white/5 rounded-2xl p-8 h-full transition-colors hover:border-primary/20"
                 >
                   <h3 className="text-xl font-display font-bold text-primary mb-6 uppercase tracking-widest text-sm">{t(`technologies.categories.${category}`)}</h3>

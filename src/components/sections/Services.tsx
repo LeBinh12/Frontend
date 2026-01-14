@@ -4,8 +4,9 @@ import React from 'react';
 import { Grid, Row, Col, Panel } from 'rsuite';
 import { mockData } from '@/data/mockData';
 import { Code, Cpu, Cloud, Palette } from 'lucide-react';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useRef } from 'react';
 
 const iconMap: Record<string, any> = {
   Code: <Code className="w-10 h-10 text-primary" />,
@@ -25,25 +26,38 @@ const containerVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, scale: 0.98 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    scale: 1,
+    transition: { duration: 0.5, ease: "easeOut" }
   }
 };
 
 const Services = () => {
   const { t } = useTranslation();
   const serviceKeys = ['blockchain', 'ai', 'cloud', 'design'];
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const yHeader = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
   return (
-    <section className="py-24 bg-bg-card/30" id="services">
+    <section ref={ref} className="py-24 bg-bg-card/30" id="services">
       <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ amount: 0.3 }}
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ amount: 0.3, once: false }}
         transition={{ duration: 0.8 }}
+        style={{ 
+          y: yHeader,
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
+          transformStyle: 'preserve-3d'
+        }}
         className="container mx-auto px-6 text-center mb-16"
       >
         <h2 className="text-4xl md:text-5xl mb-6">{t('services.title')} <span className="text-primary">{t('services.highlight')}</span></h2>
@@ -58,14 +72,20 @@ const Services = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ amount: 0.1 }}
+            viewport={{ amount: 0.1, once: false }}
           >
             <Row gutter={30}>
               {mockData.services.map((service, i) => (
                 <Col key={service.id} xs={24} md={12} lg={6} className="mb-8">
-                  <motion.div variants={itemVariants}>
+                  <motion.div 
+                    variants={itemVariants}
+                    style={{
+                      backfaceVisibility: 'hidden',
+                      WebkitBackfaceVisibility: 'hidden',
+                      transformStyle: 'preserve-3d'
+                    }}
+                  >
                     <Panel 
-                      shaded 
                       className="h-full bg-bg-card border border-white/5! transition-all duration-300 hover:-translate-y-2 hover:border-primary/50! group cursor-default"
                     >
                       <div className="mb-6 p-4 inline-block bg-primary/5 rounded-2xl group-hover:bg-primary/10 transition-colors">

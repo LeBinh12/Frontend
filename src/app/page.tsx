@@ -10,26 +10,32 @@ import Portfolio from '@/components/sections/Portfolio';
 import Team from '@/components/sections/Team';
 import Stats from '@/components/sections/Stats';
 import { motion } from 'framer-motion';
+import GlobalScene from '@/components/canvas/GlobalScene';
+
+import SmoothScroll from '@/components/common/SmoothScroll';
 
 export default function Home() {
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="flex flex-col min-h-screen"
-    >
-      <Header />
-      <main className="flex-grow">
-        <Hero />
-        <Overview />
-        <Services />
-        <Stats />
-        <Portfolio />
-        <Technologies />
-        <Team />
-      </main>
-      <Footer />
-    </motion.div>
+    <SmoothScroll>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col min-h-screen"
+      >
+        <GlobalScene />
+        <Header />
+        <main className="flex-grow">
+          <Hero />
+          <Overview />
+          <Services />
+          <Stats />
+          <Portfolio />
+          <Technologies />
+          <Team />
+        </main>
+        <Footer />
+      </motion.div>
+    </SmoothScroll>
   );
 }

@@ -3,11 +3,19 @@
 import React from 'react';
 import { Grid, Row, Col, Panel } from 'rsuite';
 import { mockData } from '@/data/mockData';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useRef } from 'react';
 
 const Team = () => {
   const { t } = useTranslation();
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const yCards = useTransform(scrollYProgress, [0, 1], [30, -30]);
   
   // Categorize members (For demo purposes, overriding roles or using distinct data)
   const technicalLeaders = [
@@ -27,11 +35,17 @@ const Team = () => {
 
   const renderMemberCard = (member: any, index: number) => (
     <motion.div
-      key={index}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ amount: 0.1 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
+      initial={{ opacity: 0, scale: 0.98 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ amount: 0.1, once: false }}
+      transition={{ delay: index * 0.05, duration: 0.5 }}
+      style={{ 
+        y: yCards,
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden',
+        transformStyle: 'preserve-3d',
+        willChange: 'opacity, transform'
+      }}
       className="h-full"
     >
       <div className="group relative aspect-square bg-bg-card border border-white/10 hover:border-primary/50 transition-colors duration-300">
@@ -79,7 +93,7 @@ const Team = () => {
   );
 
   return (
-    <section className="py-24 bg-bg-dark" id="team">
+    <section ref={ref} className="py-24 bg-bg-dark" id="team">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl mb-6 font-display font-bold">

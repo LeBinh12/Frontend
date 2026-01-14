@@ -3,11 +3,13 @@
 import React, { useState } from 'react';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Grid, Row, Col, Form, Button, Input, Message, useToaster } from 'rsuite';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 import { mockData } from '@/data/mockData';
 import { useTranslation } from 'react-i18next';
+import SmoothScroll from '@/components/common/SmoothScroll';
+import { useRef } from 'react';
 
 const ContactPage = () => {
   const { t } = useTranslation();
@@ -40,74 +42,78 @@ const ContactPage = () => {
     setSubmitted(true);
   };
 
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const yTitle = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const yForm = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="flex flex-col min-h-screen bg-bg-dark"
-    >
-      <Header />
-      
-      <main className="flex-grow pt-32 pb-24">
-        <div className="container mx-auto px-6">
-          <Row gutter={40}>
-            {/* Contact Info */}
-            <Col xs={24} lg={10} className="mb-16 lg:mb-0">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                <h1 className="text-5xl md:text-6xl mb-8 font-display font-bold">
-                  {t('contact.title')} <span className="text-primary">{t('contact.highlight')}</span>
-                </h1>
-                <p className="text-xl text-text-muted mb-12 leading-relaxed">
-                  {t('contact.subtitle')}
-                </p>
+    <SmoothScroll>
+      <div ref={ref} className="flex flex-col min-h-screen bg-bg-dark">
+        <Header />
+        
+        <main className="flex-grow pt-32 pb-24 overflow-hidden">
+          <div className="container mx-auto px-6">
+            <Row gutter={40}>
+              {/* Contact Info */}
+              <Col xs={24} lg={10} className="mb-16 lg:mb-0">
+                <motion.div
+                  style={{ 
+                    y: yTitle,
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    transformStyle: 'preserve-3d'
+                  }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                  <h1 className="text-5xl md:text-6xl mb-8 font-display font-bold">
+                    {t('contact.title')} <span className="text-primary">{t('contact.highlight')}</span>
+                  </h1>
+                  <p className="text-xl text-text-muted mb-12 leading-relaxed">
+                    {t('contact.subtitle')}
+                  </p>
 
-                <div className="space-y-8">
-                  <div className="flex items-start gap-6">
-                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                      <Mail size={24} />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold mb-1">{t('contact.info.email')}</h4>
-                      <p className="text-text-muted">{mockData.company.email}</p>
-                    </div>
+                  <div className="space-y-8">
+                    {[
+                      { icon: Mail, label: 'contact.info.email', value: mockData.company.email },
+                      { icon: Phone, label: 'contact.info.phone', value: mockData.company.phone },
+                      { icon: MapPin, label: 'contact.info.visit', value: mockData.company.address }
+                    ].map((item, i) => (
+                      <motion.div 
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
+                        className="flex items-start gap-6"
+                      >
+                        <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                          <item.icon size={24} />
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-bold mb-1">{t(item.label)}</h4>
+                          <p className="text-text-muted">{item.value}</p>
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
+                </motion.div>
+              </Col>
 
-                  <div className="flex items-start gap-6">
-                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                      <Phone size={24} />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold mb-1">{t('contact.info.phone')}</h4>
-                      <p className="text-text-muted">{mockData.company.phone}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-6">
-                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                      <MapPin size={24} />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold mb-1">{t('contact.info.visit')}</h4>
-                      <p className="text-text-muted">{mockData.company.address}</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </Col>
-
-            {/* Contact Form */}
-            <Col xs={24} lg={14}>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                className="bg-bg-card/50 border border-white/5 rounded-3xl p-8 md:p-12 relative overflow-hidden"
-              >
+              {/* Contact Form */}
+              <Col xs={24} lg={14}>
+                <motion.div
+                  style={{ y: yForm }}
+                  initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                  className="bg-bg-card/50 border border-white/5 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+                >
                 <AnimatePresence mode="wait">
                   {!submitted ? (
                     <motion.div
@@ -223,10 +229,11 @@ const ContactPage = () => {
             </Col>
           </Row>
         </div>
-      </main>
+        </main>
 
-      <Footer />
-    </motion.div>
+        <Footer />
+      </div>
+    </SmoothScroll>
   );
 };
 

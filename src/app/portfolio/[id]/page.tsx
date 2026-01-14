@@ -4,11 +4,13 @@ import React from 'react';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
 import { mockData } from '@/data/mockData';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Grid, Row, Col, Button, Divider } from 'rsuite';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, CheckCircle2, Target, Lightbulb } from 'lucide-react';
+import SmoothScroll from '@/components/common/SmoothScroll';
+import { useRef } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
@@ -33,48 +35,69 @@ const CaseStudyPage = () => {
 
   const resultsList = t('portfolio.detail.results.list', { returnObjects: true }) as string[];
 
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const yHero = useTransform(scrollYProgress, [0, 0.5], [0, 50]);
+  const scaleHero = useTransform(scrollYProgress, [0, 0.5], [1, 1.05]);
+
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="flex flex-col min-h-screen bg-bg-dark"
-    >
-      <Header />
-      
-      <main className="flex-grow pt-32 pb-24">
-        {/* Navigation & Header */}
-        <div className="container mx-auto px-6 mb-12">
-          <button 
-            onClick={() => router.back()} 
-            className="flex items-center gap-2 text-text-muted hover:text-primary transition-colors mb-8 group"
-          >
-            <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
-            <span className="font-bold">{t('portfolio.detail.back')}</span>
-          </button>
+    <SmoothScroll>
+      <div ref={ref} className="flex flex-col min-h-screen bg-bg-dark">
+        <Header />
+        
+        <main className="flex-grow pt-32 pb-24 overflow-hidden">
+          {/* Navigation & Header */}
+          <div className="container mx-auto px-6 mb-12">
+            <button 
+              onClick={() => router.back()} 
+              className="flex items-center gap-2 text-text-muted hover:text-primary transition-colors mb-8 group"
+            >
+              <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
+              <span className="font-bold">{t('portfolio.detail.back')}</span>
+            </button>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-primary text-sm uppercase font-bold tracking-[0.3em] mb-4 block">{project.category} {t('portfolio.detail.caseStudy')}</span>
-            <h1 className="text-5xl md:text-8xl mb-12 text-white">{project.title}</h1>
-          </motion.div>
-        </div>
+            <motion.div
+              style={{
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden',
+                transformStyle: 'preserve-3d'
+              }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <span className="text-primary text-sm uppercase font-bold tracking-[0.3em] mb-4 block">{project.category} {t('portfolio.detail.caseStudy')}</span>
+              <h1 className="text-5xl md:text-8xl mb-12 text-white">{project.title}</h1>
+            </motion.div>
+          </div>
 
-        {/* Hero Image */}
-        <div className="w-full h-[80vh] relative mb-16 px-6">
-          <motion.img 
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            src={project.image} 
-            alt={project.title}
-            className="w-full h-full object-cover rounded-3xl shadow-2xl border border-white/5"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg-dark rounded-3xl mx-6" />
-        </div>
+          {/* Hero Image */}
+          <div className="w-full h-[80vh] relative mb-16 px-6">
+            <motion.div
+              style={{ 
+                y: yHero, 
+                scale: scaleHero,
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden',
+                transformStyle: 'preserve-3d'
+              }}
+              className="w-full h-full"
+            >
+              <motion.img 
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: "circOut" }}
+                src={project.image} 
+                alt={project.title}
+                className="w-full h-full object-cover rounded-3xl shadow-2xl border border-white/5"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg-dark rounded-3xl mx-6" />
+            </motion.div>
+          </div>
 
         {/* Content Section */}
         <div className="container mx-auto px-6">
@@ -144,10 +167,11 @@ const CaseStudyPage = () => {
             </Row>
           </Grid>
         </div>
-      </main>
+        </main>
       
-      <Footer />
-    </motion.div>
+        <Footer />
+      </div>
+    </SmoothScroll>
   );
 };
 

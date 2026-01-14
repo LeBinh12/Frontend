@@ -15,7 +15,10 @@ const CustomCursor = () => {
   const springX = useSpring(mouseX, { stiffness: 150, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 150, damping: 20 });
 
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
@@ -49,7 +52,7 @@ const CustomCursor = () => {
     };
   }, [mouseX, mouseY, isVisible]);
 
-  if (typeof window === 'undefined') return null;
+  if (!mounted) return null;
 
   return (
     <div className={`fixed inset-0 pointer-events-none z-[9999] mix-blend-difference transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>

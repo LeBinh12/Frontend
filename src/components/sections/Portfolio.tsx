@@ -3,21 +3,37 @@
 import React from 'react';
 import { Grid, Row, Col, Button } from 'rsuite';
 import { mockData } from '@/data/mockData';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Portfolio = () => {
   const { t } = useTranslation();
   const projectKeys = ['nebula', 'vortex', 'titan'];
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [40, -40]); // Reduced from 100
+  const y2 = useTransform(scrollYProgress, [0, 1], [20, -20]);   // Reduced from 50
+  const y3 = useTransform(scrollYProgress, [0, 1], [60, -60]); // Reduced from 150
+
+  const getParallaxY = (index: number) => {
+    if (index % 3 === 0) return y1;
+    if (index % 3 === 1) return y2;
+    return y3;
+  };
 
   return (
-    <section className="py-24 bg-bg-card/30" id="portfolio">
+    <section ref={ref} className="py-24 bg-bg-card/30 overflow-hidden" id="portfolio">
       <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ amount: 0.3 }}
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ amount: 0.3, once: false }}
         transition={{ duration: 0.8 }}
         className="container mx-auto px-6 flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
       >
@@ -40,11 +56,17 @@ const Portfolio = () => {
             {mockData.portfolio.map((project, i) => (
               <Col key={project.id} xs={24} md={12} lg={8} className="mb-12">
                 <motion.div 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ amount: 0.2 }}
-                  transition={{ delay: i * 0.1, duration: 0.6 }}
-                  className="group cursor-pointer"
+                  style={{ 
+                    y: getParallaxY(i), 
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    transformStyle: 'preserve-3d',
+                    willChange: 'opacity, transform'
+                  }}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ amount: 0.1, once: false }}
+                  transition={{ duration: 0.5, ease: "easeOut" }} 
                 >
                   <Link href={`/portfolio/${project.id}`} className="block">
                     <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-6 bg-bg-card border border-white/5 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/20">
@@ -57,8 +79,6 @@ const Portfolio = () => {
                       {/* Modern Overlay */}
                       <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
                         <motion.div 
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          whileInView={{ scale: 1, opacity: 1 }} // Only for initial render if needed, but for hover we rely on CSS/group
                           className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100"
                         >
                           <ArrowUpRight className="text-white w-8 h-8" />
