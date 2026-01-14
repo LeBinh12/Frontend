@@ -3,7 +3,7 @@ export const mockData = {
     name: "Lucidtech",
     tagline: "#lucidtechvn #lucidtechnologyvn, #lctvn",
     description: "We build the next generation of decentralized applications and high-performance infrastructure for the web3 era.",
-    email: "contact@lucidtech.com",
+    email: "tanmy@lucidtech.com",
     phone: "+1 (555) 000-8888",
     address: "123 Innovation Drive, Tech Valley, CA 94043",
     images: {
@@ -11,71 +11,57 @@ export const mockData = {
       team: "/images/team_collaboration.jpg"
     },
     stats: [
-      { label: "Founded", value: "2018" },
-      { label: "Engineers", value: "50+" },
-      { label: "Projects Delivered", value: "120+" },
-      { label: "Happy Clients", value: "45" }
+      { label: "Founded", value: "2023" },
+      { label: "Engineers", value: "10+" },
+      { label: "Projects Delivered", value: "10+" },
+      { label: "Happy Clients", value: "10+" }
     ]
   },
   services: [
     {
       id: 1,
-      title: "Blockchain Development",
-      description: "Custom smart contracts, DApps, and protocol development tailored to your ecosystem.",
+      title: "Smart Gas Station Solution",
+      description: "A comprehensive gas station management software system built on over 30 years of real-world industry experience. It integrates sales management, inventory control, accounts receivable, employee management, and real-time reporting. User-friendly interface with multi-branch synchronization and automatic cloud data backup",
       icon: "Code"
     },
     {
       id: 2,
-      title: "AI Integration",
-      description: "Harnessing the power of machine learning to automate and optimize your business flows.",
+      title: "Custom Software Development",
+      description: "Design and development of websites, mobile applications, and enterprise management software tailored to specific business needs. Our experienced development team understands business processes and provides optimal solutions using modern technologies, with long-term maintenance and operational support",
       icon: "Mind"
     },
     {
       id: 3,
-      title: "Cloud Infrastructure",
-      description: "Robust, scalable, and secure cloud solutions using AWS, Azure, and Google Cloud.",
+      title: "Digital Transformation Consulting",
+      description: "Providing end-to-end digital transformation consulting services for small and medium-sized enterprises. We analyze existing processes, propose suitable technology solutions, provide staff training, and support implementation to help businesses optimize costs, improve efficiency, and enhance competitive advantages.",
       icon: "Cloud"
     },
     {
       id: 4,
-      title: "UI/UX Design",
-      description: "Creating immersive and intuitive digital experiences that delight users and drive conversion.",
+      title: "IT Recruitment & Staffing Services",
+      description: "Supporting businesses in sourcing and recruiting high-quality IT talent. We provide IT staffing services for both project-based and long-term engagements, with experienced professionals in software development, system administration, and information security",
       icon: "Design"
     }
   ],
   technologies: [
     { name: "React", category: "Frontend" },
     { name: "Next.js", category: "Frontend" },
-    { name: "Tailwind CSS", category: "Frontend" },
-    { name: "TypeScript", category: "Frontend" },
-    { name: "Framer Motion", category: "Frontend" },
-    { name: "Three.js", category: "Frontend" },
-    { name: "Node.js", category: "Backend" },
-    { name: "Go", category: "Backend" },
-    { name: "Rust", category: "Backend" },
-    { name: "Python", category: "Backend" },
-    { name: "PostgreSQL", category: "Backend" },
-    { name: "Redis", category: "Backend" },
-    { name: "Solidity", category: "Web3" },
-    { name: "Ethers.js", category: "Web3" },
-    { name: "Hardhat", category: "Web3" },
-    { name: "The Graph", category: "Web3" },
-    { name: "IPFS", category: "Web3" },
-    { name: "PyTorch", category: "AI & Data" },
-    { name: "TensorFlow", category: "AI & Data" },
-    { name: "Pandas", category: "AI & Data" },
-    { name: "OpenCV", category: "AI & Data" },
+    { name: "ASP.NET", category: "Frontend" },
+    { name: "ASP.NET Web API", category: "Backend" },
+    { name: "Golang", category: "Backend" },
+    { name: "PyTorch", category: "AI & Machine Learning" },
+    { name: "TensorFlow", category: "AI & Machine Learning" },
     { name: "Kubernetes", category: "Cloud & DevOps" },
     { name: "Docker", category: "Cloud & DevOps" },
-    { name: "AWS", category: "Cloud & DevOps" },
-    { name: "Azure", category: "Cloud & DevOps" },
     { name: "Terraform", category: "Cloud & DevOps" }
   ],
   bigStats: [
-    { label: "Total Assets Managed", value: "$4.2B+", detail: "Growing 15% MoM" },
-    { label: "Active Network Nodes", value: "25k+", detail: "Globally Distributed" },
-    { label: "Transaction Speed", value: "< 2.5s", detail: "Industry Leading" },
-    { label: "Uptime SLA", value: "99.99%", detail: "Enterprise Grade" }
+    { label: "Smart Gas Station Solution", value: "500K+ Transactions / Day", detail: "Across 100 Gas Stations" },
+    { label: "Projects Delivered", value: "30+", detail: "Across Multiple Industries" },
+    { label: "Active Clients", value: "20+", detail: "Long-Term Partnerships" },
+    { label: "Engineering Experience", value: "10+ Years", detail: "Industry Expertise" },
+    { label: "System Reliability", value: "99.9%", detail: "Stable & Secure Solutions" }
+
   ],
   portfolio: [
     {
@@ -105,19 +91,19 @@ export const mockData = {
       name: "Leo Sterling",
       role: "CEO & Founder",
       bio: "Visionary leader with 15+ years in the tech industry.",
-      avatar: "https://i.pravatar.cc/150?u=leo"
+      avatar: "/images/avatar.jpg"
     },
     {
       name: "Sarah Chen",
       role: "CTO",
       bio: "Former Google architect specializing in distributed systems.",
-      avatar: "https://i.pravatar.cc/150?u=sarah"
+      avatar: "/images/avatar.jpg"
     },
     {
       name: "Marcus Vane",
       role: "Head of Design",
       bio: "Award-winning designer obsessed with pixel-perfection.",
-      avatar: "https://i.pravatar.cc/150?u=marcus"
+      avatar: "/images/avatar.jpg"
     }
   ]
 };

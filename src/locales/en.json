@@ -12,9 +12,9 @@
   },
   "hero": {
     "badge": "NEXT GENERATION TECHNOLOGY",
-    "title": "Building the Future of",
-    "highlight": "Decentralized Tech",
-    "description": "We specialize in building cutting-edge blockchain solutions, immersive digital experiences, and high-performance infrastructure.",
+    "title": "Building the Future",
+    "highlight": "#lucidtechvn #lucidtechnologyvn, #lctvn",
+    "description": "Lucidtech is a technology company specializing in software development, digital transformation, and technology consulting services. We focus on building secure, scalable, and high-quality systems that help businesses optimize operations and enhance their competitive advantage in the digital era",
     "viewWork": "View Portfolio"
   },
   "overview": {
@@ -28,20 +28,20 @@
     "highlight": "Core Services",
     "description": "We offer a comprehensive suite of services to help you build and scale your digital vision.",
     "blockchain": {
-      "title": "Blockchain Development",
-      "description": "Custom smart contracts, DApps, and protocol development tailored to your ecosystem."
+      "title": "Smart Gas Station Solution",
+      "description": "A comprehensive gas station management software system built on over 30 years of real-world industry experience. It integrates sales management, inventory control, accounts receivable, employee management, and real-time reporting. User-friendly interface with multi-branch synchronization and automatic cloud data backup."
     },
     "ai": {
-      "title": "AI Integration",
-      "description": "Harnessing the power of machine learning to automate and optimize your business flows."
+      "title": "Digital Transformation Consulting",
+      "description": "Providing end-to-end digital transformation consulting services for small and medium-sized enterprises. We analyze existing processes, propose suitable technology solutions, provide staff training, and support implementation to help businesses optimize costs, improve efficiency, and enhance competitive advantages."
     },
     "cloud": {
-      "title": "Cloud Infrastructure",
-      "description": "Robust, scalable, and secure cloud solutions using AWS, Azure, and Google Cloud."
+      "title": "Custom Software Development",
+      "description": "Design and development of websites, mobile applications, and enterprise management software tailored to specific business needs. Our experienced development team understands business processes and provides optimal solutions using modern technologies, with long-term maintenance and operational support."
     },
     "design": {
-      "title": "UI/UX Design",
-      "description": "Creating immersive and intuitive digital experiences that delight users and drive conversion."
+      "title": "IT Recruitment & Staffing Services",
+      "description": "Supporting businesses in sourcing and recruiting high-quality IT talent. We provide IT staffing services for both project-based and long-term engagements, with experienced professionals in software development, system administration, and information security."
     }
   },
   "stats": {
@@ -130,6 +130,28 @@
     "title": "Meet the",
     "highlight": "Visionaries",
     "subtitle": "Our diverse team combines decades of experience in software engineering, 3D design, and decentralized systems.",
+    "sections": {
+      "technical": "Technical Leaders",
+      "leadership": "Leadership",
+      "development": "Development Team"
+    },
+    "members": {
+      "henry": "Henry",
+      "steven": "Steven",
+      "johnb": "JohnB",
+      "rinyal": "Rinyal",
+      "dora": "Dora Ho",
+      "emily": "Emily",
+      "jayden": "Jayden Ngo",
+      "mat": "Mat"
+    },
+    "roles": {
+      "technicalLeader": "Technical Leader",
+      "leader": "Leader",
+      "developer": "Developer",
+      "devops": "DevOps Engineer",
+      "tester": "Tester"
+    },
     "collaboration": {
       "title": "Collaborative Excellence",
       "description": "We believe that the best products are built through open communication and shared passion for technology."
@@ -173,7 +195,6 @@
       "title": "Message Sent!",
       "message": "Thank you for reaching out. Our team will get back to you within 24 hours.",
       "another": "Send another message"
-    
     },
     "info": {
       "email": "Email Us",

@@ -12,9 +12,9 @@
   },
   "hero": {
     "badge": "CÔNG NGHỆ THẾ HỆ MỚI",
-    "title": "Xây dựng tương lai cho",
-    "highlight": "Công nghệ phi tập trung",
-    "description": "Chúng tôi chuyên xây dựng các giải pháp blockchain tiên tiến, trải nghiệm kỹ thuật số nhập vai và cơ sở hạ tầng hiệu suất cao.",
+    "title": "Xây dựng tương lai",
+    "highlight": "#lucidtechvn #lucidtechnologyvn, #lctvn",
+    "description": "Lucidtech là công ty công nghệ chuyên về phát triển phần mềm, chuyển đổi số và dịch vụ tư vấn công nghệ. Chúng tôi tập trung xây dựng các hệ thống an toàn, có khả năng mở rộng và chất lượng cao, giúp các doanh nghiệp tối ưu hóa hoạt động và nâng cao lợi thế cạnh tranh trong kỷ nguyên số.",
     "viewWork": "Xem dự án"
   },
   "overview": {
@@ -28,20 +28,20 @@
     "highlight": "Dịch vụ chính",
     "description": "Chúng tôi cung cấp một loạt các dịch vụ toàn diện để giúp bạn xây dựng và mở rộng tầm nhìn kỹ thuật số của mình.",
     "blockchain": {
-      "title": "Phát triển Blockchain",
-      "description": "Hợp đồng thông minh tùy chỉnh, DApps và phát triển giao thức phù hợp với hệ sinh thái của bạn."
+      "title": "Giải pháp Cây xăng Thông minh",
+      "description": "Một hệ thống phần mềm quản lý trạm xăng toàn diện được xây dựng trên hơn 30 năm kinh nghiệm thực tế trong ngành. Nó tích hợp quản lý bán hàng, kiểm soát hàng tồn kho, công nợ phải thu, quản lý nhân viên và báo cáo thời gian thực. Giao diện thân thiện với người dùng với tính năng đồng bộ hóa đa chi nhánh và sao lưu dữ liệu đám mây tự động."
     },
     "ai": {
-      "title": "Tích hợp AI",
-      "description": "Tận dụng sức mạnh của học máy để tự động hóa và tối ưu hóa các quy trình kinh doanh của bạn."
+      "title": "Tư vấn Chuyển đổi số",
+      "description": "Cung cấp dịch vụ tư vấn chuyển đổi số toàn diện cho các doanh nghiệp vừa và nhỏ. Chúng tôi phân tích các quy trình hiện có, đề xuất các giải pháp công nghệ phù hợp, đào tạo nhân viên và hỗ trợ triển khai để giúp doanh nghiệp tối ưu hóa chi phí, nâng cao hiệu quả và lợi thế cạnh tranh."
     },
     "cloud": {
-      "title": "Cơ sở hạ tầng đám mây",
-      "description": "Giải pháp đám mây mạnh mẽ, có khả năng mở rộng và an toàn sử dụng AWS, Azure và Google Cloud."
+      "title": "Phát triển Phần mềm theo yêu cầu",
+      "description": "Thiết kế và phát triển trang web, ứng dụng di động và phần mềm quản lý doanh nghiệp phù hợp với nhu cầu kinh doanh cụ thể. Đội ngũ phát triển giàu kinh nghiệm của chúng tôi am hiểu các quy trình kinh doanh và cung cấp các giải pháp tối ưu bằng công nghệ hiện đại, kèm theo bảo trì và hỗ trợ vận hành lâu dài."
     },
     "design": {
-      "title": "Thiết kế UI/UX",
-      "description": "Tạo ra các trải nghiệm kỹ thuật số nhập vai và trực quan làm hài lòng người dùng và thúc đẩy chuyển đổi."
+      "title": "Dịch vụ Tuyển dụng & Cung ứng Nhân sự IT",
+      "description": "Hỗ trợ doanh nghiệp trong việc tìm kiếm và tuyển dụng nhân tài IT chất lượng cao. Chúng tôi cung cấp dịch vụ cung ứng nhân sự IT cho cả các dự án ngắn hạn và dài hạn, với các chuyên gia giàu kinh nghiệm trong phát triển phần mềm, quản trị hệ thống và bảo mật thông tin."
     }
   },
   "stats": {
@@ -130,6 +130,28 @@
     "title": "Gặp gỡ những",
     "highlight": "Người có tầm nhìn",
     "subtitle": "Đội ngũ đa dạng của chúng tôi kết hợp hàng thập kỷ kinh nghiệm trong kỹ thuật phần mềm, thiết kế 3D và các hệ thống phi tập trung.",
+    "sections": {
+      "technical": "Lãnh đạo Kỹ thuật",
+      "leadership": "Ban lãnh đạo",
+      "development": "Đội ngũ Phát triển"
+    },
+    "members": {
+      "henry": "Henry",
+      "steven": "Steven",
+      "johnb": "JohnB",
+      "rinyal": "Rinyal",
+      "dora": "Dora Ho",
+      "emily": "Emily",
+      "jayden": "Jayden Ngo",
+      "mat": "Mat"
+    },
+    "roles": {
+      "technicalLeader": "Trưởng nhóm Kỹ thuật",
+      "leader": "Lãnh đạo",
+      "developer": "Lập trình viên",
+      "devops": "Kỹ sư DevOps",
+      "tester": "Kiểm thử viên"
+    },
     "collaboration": {
       "title": "Sự xuất sắc trong cộng tác",
       "description": "Chúng tôi tin rằng những sản phẩm tốt nhất được xây dựng thông qua giao tiếp cởi mở và niềm đam mê chung đối với công nghệ."
@@ -165,7 +187,7 @@
       "emailPlaceholder": "email@example.com",
       "phonePlaceholder": "0901234567",
       "subjectPlaceholder": "Yêu cầu dự án",
-      "messagePlaceholder": "Hãy kể cho chúng tôi về dự án của bạn...",
+      "messagePlaceholder": "Hãy kể cho chúng tôi về dự cá nhân bạn...",
       "submit": "Gửi tin nhắn",
       "required_error": "Vui lòng điền đầy đủ các thông tin bắt buộc"
     },
@@ -196,3 +218,4 @@
     "copyright": "Bản quyền đã được bảo lưu."
   }
 }
+

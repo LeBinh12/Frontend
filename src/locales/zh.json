@@ -13,8 +13,8 @@
   "hero": {
     "badge": "下一代技术",
     "title": "构建未来",
-    "highlight": "去中心化技术",
-    "description": "我们专注于构建尖端的区块链解决方案、沉浸式数字体验和高性能基础设施。",
+    "highlight": "#lucidtechvn #lucidtechnologyvn, #lctvn",
+    "description": "Lucidtech 是一家专注于软件开发、数字化转型和技术咨询服务的技术公司。我们致力于构建安全、可扩展且高质量的系统，帮助企业在数字时代优化运营并提升竞争优势。",
     "viewWork": "查看作品集"
   },
   "overview": {
@@ -28,20 +28,20 @@
     "highlight": "核心服务",
     "description": "我们提供全方位的服务，帮助您构建和扩展您的数字愿景。",
     "blockchain": {
-      "title": "区块链开发",
-      "description": "为您生态系统量身定制的智能合约、DApps 和协议开发。"
+      "title": "智能加油站解决方案",
+      "description": "一套基于 30 多年行业实战经验构建的全方位加油站管理软件系统。集成了销售管理、库存控制、应收账款、员工管理和实时报告。用户界面友好，支持多网点同步和云端自动数据备份。"
     },
     "ai": {
-      "title": "AI 集成",
-      "description": "利用机器学习的力量自动优化您的业务流程。"
+      "title": "数字化转型咨询",
+      "description": "为中小企业提供端到端的数字化转型咨询服务。我们分析现有流程，提出合适的技术解决方案，提供员工培训，并支持实施，帮助企业优化成本、提高效率并增强竞争优势。"
     },
     "cloud": {
-      "title": "云基础设施",
-      "description": "使用 AWS、Azure 和 Google Cloud 提供强大、可扩展且安全的云解决方案。"
+      "title": "定制软件开发",
+      "description": "根据特定业务需求设计和开发网站、移动应用程序和企业管理软件。我们经验丰富的开发团队了解业务流程，并使用现代技术提供最佳解决方案，提供长期维护和运营支持。"
     },
     "design": {
-      "title": "UI/UX 设计",
-      "description": "创造沉浸式且直观的数字体验，取悦用户并推动转化。"
+      "title": "IT 招聘与人员配备服务",
+      "description": "支持企业寻找和招聘高质量的 IT 人才。我们为项目制和长期聘用提供 IT 人员配备服务，拥有软件开发、系统管理和信息安全方面的资深专业人士。"
     }
   },
   "stats": {
@@ -121,7 +121,7 @@
     "categories": {
       "Frontend": "前端",
       "Backend": "后端",
-      "Web3": "Web3流",
+      "Web3": "Web3",
       "AI & Data": "AI 与数据",
       "Cloud & DevOps": "云与 DevOps"
     }
@@ -130,6 +130,28 @@
     "title": "遇见",
     "highlight": "愿景家",
     "subtitle": "我们的多元化团队结合了数十年的软件工程、3D 设计和去中心化系统经验。",
+    "sections": {
+      "technical": "技术领导者",
+      "leadership": "领导层",
+      "development": "开发团队"
+    },
+    "members": {
+      "henry": "Henry",
+      "steven": "Steven",
+      "johnb": "JohnB",
+      "rinyal": "Rinyal",
+      "dora": "Dora Ho",
+      "emily": "Emily",
+      "jayden": "Jayden Ngo",
+      "mat": "Mat"
+    },
+    "roles": {
+      "technicalLeader": "技术负责人",
+      "leader": "领导者",
+      "developer": "开发人员",
+      "devops": "DevOps 工程师",
+      "tester": "测试员"
+    },
     "collaboration": {
       "title": "卓越协作",
       "description": "我们相信，最好的产品是通过开放的沟通和对技术的共同热情构建的。"
@@ -191,8 +213,9 @@
     "newsletter_placeholder": "输入您的电子邮件",
     "newsletter_button": "订阅",
     "documentation": "文档",
-    "support": "支持",
+    "status": "状态",
     "privacy": "隐私政策",
     "copyright": "版权所有。"
   }
 }
+

@@ -17,20 +17,22 @@ const Team = () => {
 
   const yCards = useTransform(scrollYProgress, [0, 1], [30, -30]);
   
-  // Categorize members (For demo purposes, overriding roles or using distinct data)
+  // Categorize members
   const technicalLeaders = [
-    { ...mockData.team[1], role: "Technical Leader", key: "sarah" } // Sarah (CTO)
+    { ...mockData.team[1], role: t('team.roles.technicalLeader'), key: "Henry", name: t('team.members.henry') }
   ];
   
   const leaders = [
-    { ...mockData.team[0], role: "Leader", key: "leo" } // Leo (CEO)
+    { ...mockData.team[0], role: t('team.roles.leader'), key: "Steven", name: t('team.members.steven') }
   ];
   
   const devs = [
-    { ...mockData.team[2], role: "Senior Dev", key: "marcus" }, // Marcus
-    { ...mockData.team[1], role: "Backend Dev", key: "sarah", name: "David Kim" }, // Dummy
-    { ...mockData.team[0], role: "Frontend Dev", key: "leo", name: "Alex Chen" }, // Dummy
-    { ...mockData.team[2], role: "Fullstack Dev", key: "marcus", name: "Emily Wang" } // Dummy
+    { ...mockData.team[2], role: t('team.roles.developer'), key: "JohnB", name: t('team.members.johnb') },
+    { ...mockData.team[1], role: t('team.roles.developer'), key: "Rinyal", name: t('team.members.rinyal') },
+    { ...mockData.team[0], role: t('team.roles.devops'), key: "Dora Ho", name: t('team.members.dora') },
+    { ...mockData.team[2], role: t('team.roles.tester'), key: "Emily", name: t('team.members.emily') },
+    { ...mockData.team[2], role: t('team.roles.devops'), key: "Jayden Ngo", name: t('team.members.jayden') },
+    { ...mockData.team[2], role: t('team.roles.developer'), key: "Mat", name: t('team.members.mat') },
   ];
 
   const renderMemberCard = (member: any, index: number) => (
@@ -108,7 +110,7 @@ const Team = () => {
         <div className="mb-16">
           <div className="flex justify-center mb-8">
              <span className="px-4 py-1 rounded-full border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest bg-primary/5">
-               Technical Leaders
+               {t('team.sections.technical')}
              </span>
           </div>
           <div className="flex justify-center flex-wrap gap-8 max-w-4xl mx-auto">
@@ -124,7 +126,7 @@ const Team = () => {
         <div className="mb-16">
           <div className="flex justify-center mb-8">
              <span className="px-4 py-1 rounded-full border border-white/20 text-white text-xs font-bold uppercase tracking-widest bg-white/5">
-               Leadership
+               {t('team.sections.leadership')}
              </span>
           </div>
            <div className="flex justify-center flex-wrap gap-8 max-w-4xl mx-auto">
@@ -140,12 +142,12 @@ const Team = () => {
         <div>
           <div className="flex justify-center mb-8">
              <span className="px-4 py-1 rounded-full border border-white/20 text-text-muted text-xs font-bold uppercase tracking-widest bg-white/5">
-               Development Team
+               {t('team.sections.development')}
              </span>
           </div>
-          <div className="flex justify-center flex-wrap gap-6 max-w-5xl mx-auto">
+          <div className="flex justify-center flex-wrap gap-6 max-w-7xl mx-auto">
              {devs.map((member, i) => (
-                <div key={i} className="w-56"> 
+                <div key={i} className="w-64"> 
                    {renderMemberCard(member, i)}
                 </div>
              ))}
@@ -154,6 +156,7 @@ const Team = () => {
 
       </div>
     </section>
+
   );
 };
 
