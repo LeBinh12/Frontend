@@ -45,7 +45,7 @@ const Preloader = () => {
               className="w-34 h-34 flex items-center justify-center mb-8"
             >
               <img 
-                src="/images/logo-none.PNG" 
+                src="/images/logo-none.png" 
                 alt="Logo" 
                 className="w-full h-full object-contain p-2 filter 
            drop-shadow-[0_0_14px_rgba(255,255,255,0.7)]"
