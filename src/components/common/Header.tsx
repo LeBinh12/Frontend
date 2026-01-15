@@ -69,7 +69,7 @@ className="w-full h-full object-contain filter
                 </motion.div>
 
 
-                  <span className="font-display font-bold text-xl tracking-tight hidden sm:block">
+                  <span className="font-display font-bold text-2xl tracking-tight hidden sm:block">
                     {mockData.company.name}
                   </span>
                 </motion.div>

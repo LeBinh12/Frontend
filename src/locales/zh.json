@@ -122,8 +122,9 @@
       "Frontend": "前端",
       "Backend": "后端",
       "Web3": "Web3",
-      "AI & Data": "AI 与数据",
-      "Cloud & DevOps": "云与 DevOps"
+      "AI & Machine Learning": "AI 与机器学习",
+      "Cloud & DevOps": "云与 DevOps",
+      "Mobile Development": "移动开发"
     }
   },
   "team": {

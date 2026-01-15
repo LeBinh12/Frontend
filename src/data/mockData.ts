@@ -47,6 +47,8 @@ export const mockData = {
     { name: "React", category: "Frontend" },
     { name: "Next.js", category: "Frontend" },
     { name: "ASP.NET", category: "Frontend" },
+    { name: "React Native", category: "Mobile Development" },
+    { name: ".NET MAUI", category: "Mobile Development" },
     { name: "ASP.NET Web API", category: "Backend" },
     { name: "Golang", category: "Backend" },
     { name: "PyTorch", category: "AI & Machine Learning" },

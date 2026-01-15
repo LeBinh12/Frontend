@@ -122,8 +122,9 @@
       "Frontend": "Frontend",
       "Backend": "Backend",
       "Web3": "Web3",
-      "AI & Data": "AI & Data",
-      "Cloud & DevOps": "Cloud & DevOps"
+      "AI & Machine Learning": "AI & Machine Learning",
+      "Cloud & DevOps": "Cloud & DevOps",
+      "Mobile Development": "Mobile Development"
     }
   },
   "team": {
