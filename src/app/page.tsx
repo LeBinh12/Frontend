@@ -32,7 +32,7 @@ export default function Home() {
           <Stats />
           <Portfolio />
           <Technologies />
-          <Team />
+          {/* <Team /> */}
         </main>
         <Footer />
       </motion.div>
