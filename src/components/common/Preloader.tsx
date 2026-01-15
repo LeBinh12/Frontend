@@ -42,9 +42,13 @@ const Preloader = () => {
                   ease: "easeOut" 
                 }
               }}
-              className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center font-display font-bold text-4xl text-white shadow-2xl shadow-primary/20 mb-8"
+              className="w-32 h-32 flex items-center justify-center rounded-sm overflow-hidden shadow-2xl shadow-primary/10 bg-white/5 border border-white/5 mb-8"
             >
-              L
+              <img 
+                src="/images/logo-04.PNG" 
+                alt="Logo" 
+                className="w-full h-full object-contain p-2"
+              />
             </motion.div>
 
             {/* Lucidtech Text with Staggered Characters */}

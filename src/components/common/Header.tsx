@@ -58,9 +58,13 @@ const Header = () => {
                   <motion.div 
                     whileHover={{ scale: 1.05, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center font-bold text-xl text-white shadow-lg shadow-primary/20"
+                    className="w-14 h-14 flex items-center justify-center rounded-sm overflow-hidden shadow-lg shadow-primary/10 bg-white/5 border border-white/5"
                   >
-                    L
+                    <img 
+                      src="/images/logo-04.PNG" 
+                      alt="Logo" 
+                      className="w-full h-full object-contain p-1"
+                    />
                   </motion.div>
                   <span className="font-display font-bold text-xl tracking-tight hidden sm:block">
                     {mockData.company.name}

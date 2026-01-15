@@ -16,8 +16,12 @@ const Footer = () => {
           <Row gutter={30}>
             <Col xs={24} md={8} className="mb-10 md:mb-0">
               <div className="flex items-center gap-2 mb-6">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded flex items-center justify-center font-bold text-lg text-white">
-                  A
+                <div className="w-14 h-14 flex items-center justify-center rounded-sm overflow-hidden bg-white/5 border border-white/5 shadow-lg shadow-primary/5">
+                  <img 
+                    src="/images/logo-04.PNG" 
+                    alt="Logo" 
+                    className="w-full h-full object-contain p-1"
+                  />
                 </div>
                 <span className="font-display font-bold text-xl tracking-tight">
                   {mockData.company.name}

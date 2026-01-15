@@ -95,13 +95,13 @@ const Team = () => {
   );
 
   return (
-    <section ref={ref} className="py-24 bg-bg-dark" id="team">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl mb-6 font-display font-bold">
+    <section ref={ref} className="py-24 bg-bg-dark overflow-hidden" id="team">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 font-display font-bold">
             {t('team.title')} <span className="text-primary">{t('team.highlight')}</span>
           </h2>
-          <p className="text-lg text-text-muted max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-text-muted max-w-2xl mx-auto">
             {t('team.subtitle')}
           </p>
         </div>
@@ -115,7 +115,7 @@ const Team = () => {
           </div>
           <div className="flex justify-center flex-wrap gap-8 max-w-4xl mx-auto">
              {technicalLeaders.map((member, i) => (
-                <div key={i} className="w-64">
+                <div key={i} className="w-full sm:w-64">
                    {renderMemberCard(member, i)}
                 </div>
              ))}
@@ -131,7 +131,7 @@ const Team = () => {
           </div>
            <div className="flex justify-center flex-wrap gap-8 max-w-4xl mx-auto">
              {leaders.map((member, i) => (
-                <div key={i} className="w-64">
+                <div key={i} className="w-full sm:w-64">
                    {renderMemberCard(member, i)}
                 </div>
              ))}
@@ -147,7 +147,7 @@ const Team = () => {
           </div>
           <div className="flex justify-center flex-wrap gap-6 max-w-7xl mx-auto">
              {devs.map((member, i) => (
-                <div key={i} className="w-64"> 
+                <div key={i} className="w-full sm:w-48 md:w-56 lg:w-64"> 
                    {renderMemberCard(member, i)}
                 </div>
              ))}

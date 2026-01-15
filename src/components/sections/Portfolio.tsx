@@ -35,11 +35,11 @@ const Portfolio = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ amount: 0.3, once: false }}
         transition={{ duration: 0.8 }}
-        className="container mx-auto px-6 flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+        className="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-4 sm:gap-6"
       >
         <div className="max-w-2xl">
-          <h2 className="text-4xl md:text-5xl mb-6">{t('portfolio.title')} <span className="text-primary">{t('portfolio.highlight')}</span></h2>
-          <p className="text-lg text-text-muted leading-relaxed">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6">{t('portfolio.title')} <span className="text-primary">{t('portfolio.highlight')}</span></h2>
+          <p className="text-sm sm:text-base md:text-lg text-text-muted leading-relaxed">
             {t('portfolio.subtitle')}
           </p>
         </div>
@@ -50,11 +50,11 @@ const Portfolio = () => {
         </Link>
       </motion.div>
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <Grid fluid className="p-0!">
           <Row gutter={40}>
             {mockData.portfolio.map((project, i) => (
-              <Col key={project.id} xs={24} md={12} lg={8} className="mb-12">
+              <Col key={project.id} xs={24} md={12} lg={8} className="mb-8 sm:mb-10 md:mb-12">
                 <motion.div 
                   style={{ 
                     y: getParallaxY(i), 
@@ -92,12 +92,12 @@ const Portfolio = () => {
                        <span className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-primary text-xs uppercase font-bold tracking-wider">{project.category}</span>
                     </div>
                     <Link href={`/portfolio/${project.id}`}>
-                      <h3 className="text-2xl font-display font-medium mb-3 text-white group-hover:text-primary transition-colors flex items-center gap-2">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-display font-medium mb-3 text-white group-hover:text-primary transition-colors flex items-center gap-2">
                         {t(`portfolio.${projectKeys[i]}.title`)}
                         <ArrowUpRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                       </h3>
                     </Link>
-                    <p className="text-text-muted leading-relaxed line-clamp-2">
+                    <p className="text-sm sm:text-base text-text-muted leading-relaxed line-clamp-2">
                       {t(`portfolio.${projectKeys[i]}.description`)}
                     </p>
                   </div>

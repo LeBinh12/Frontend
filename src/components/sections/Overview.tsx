@@ -20,10 +20,10 @@ const Overview = () => {
 
   return (
     <section ref={ref} className="py-24 bg-bg-dark overflow-hidden" id="about">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <Grid fluid className="p-0!">
           <Row gutter={60} className="items-center">
-            <Col xs={24} lg={12} className="mb-12 lg:mb-0">
+            <Col xs={24} lg={12} className="mb-8 sm:mb-10 lg:mb-0">
               <motion.div 
                 style={{ 
                   y: yContent, 
@@ -65,10 +65,10 @@ const Overview = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ amount: 0.5, once: true }}
                   transition={{ delay: 0.1, duration: 0.6 }}
-                  className="absolute -bottom-6 -right-6 md:right-0 bg-bg-card border border-white/10 p-6 rounded-xl shadow-2xl backdrop-blur-md max-w-[240px] animate-bounce-slow"
+                  className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 md:right-0 bg-bg-card border border-white/10 p-4 sm:p-6 rounded-xl shadow-2xl backdrop-blur-md max-w-[200px] sm:max-w-[240px] animate-bounce-slow"
                 >
-                  <p className="text-primary font-bold text-2xl mb-1">{mockData.company.stats[2].value}</p>
-                  <p className="text-text-muted text-sm uppercase tracking-wider">{t('stats.delivered')}</p>
+                  <p className="text-primary font-bold text-lg sm:text-xl md:text-2xl mb-1">{mockData.company.stats[2].value}</p>
+                  <p className="text-text-muted text-xs sm:text-sm uppercase tracking-wider">{t('stats.delivered')}</p>
                 </motion.div>
               </motion.div>
             </Col>
@@ -80,14 +80,14 @@ const Overview = () => {
                 viewport={{ amount: 0.3 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                <h2 className="text-4xl md:text-5xl mb-8 leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 md:mb-8 leading-tight">
                   {t('overview.title')} <span className="text-primary">{t('overview.highlight')}</span>
                 </h2>
-                <p className="text-lg text-text-muted mb-8 leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg text-text-muted mb-6 sm:mb-8 leading-relaxed">
                   {t('overview.description')}
                 </p>
                 
-                <div className="grid grid-cols-2 gap-8 mt-12">
+                <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 md:mt-12">
                   {mockData.company.stats.map((stat, i) => (
                     <motion.div 
                       key={i}
@@ -97,8 +97,8 @@ const Overview = () => {
                       transition={{ delay: 0.1 + i * 0.1, duration: 0.6 }}
                       className="border-l-2 border-primary/30 pl-6"
                     >
-                      <p className="text-3xl font-bold text-white mb-1">{stat.value}</p>
-                      <p className="text-sm text-text-muted uppercase tracking-widest">{stat.label}</p>
+                      <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</p>
+                      <p className="text-xs sm:text-sm text-text-muted uppercase tracking-widest">{stat.label}</p>
                     </motion.div>
                   ))}
                 </div>

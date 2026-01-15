@@ -19,19 +19,19 @@ const Technologies = () => {
   const yCards = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   return (
-    <section ref={ref} className="py-24 bg-bg-dark" id="technologies">
-      <div className="container mx-auto px-6">
+    <section ref={ref} className="py-24 bg-bg-dark overflow-hidden" id="technologies">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ amount: 0.3, once: false }}
           transition={{ duration: 0.8 }}
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6">
             {t('technologies.title')} <span className="text-primary">{t('technologies.highlight')}</span> {t('technologies.stack')}
           </h2>
-          <p className="text-lg text-text-muted max-w-2xl leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-text-muted max-w-2xl leading-relaxed">
             {t('technologies.subtitle')}
           </p>
         </motion.div>
@@ -39,7 +39,7 @@ const Technologies = () => {
         <Grid fluid className="p-0!">
           <Row gutter={40}>
             {categories.map((category, i) => (
-              <Col key={category} xs={24} md={12} lg={8} className="mb-12">
+              <Col key={category} xs={24} md={12} lg={8} className="mb-8 sm:mb-10 md:mb-12">
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.98 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -54,7 +54,7 @@ const Technologies = () => {
                   }}
                   className="bg-bg-card/50 border border-white/5 rounded-2xl p-8 h-full transition-colors hover:border-primary/20"
                 >
-                  <h3 className="text-xl font-display font-bold text-primary mb-6 uppercase tracking-widest text-sm">{t(`technologies.categories.${category}`)}</h3>
+                  <h3 className="text-base sm:text-lg md:text-xl font-display font-bold text-primary mb-4 sm:mb-6 uppercase tracking-widest text-xs sm:text-sm">{t(`technologies.categories.${category}`)}</h3>
                   <TagGroup className="flex flex-wrap gap-3">
                     {mockData.technologies
                       .filter(t => t.category === category)
@@ -94,7 +94,7 @@ const Technologies = () => {
               'REACT', 'NODE.JS', 'TYPESCRIPT', 'AZURE', 'DOCKER', 'KUBERNETES', 
               '.NET', 'GOLANG', 'NEXT.JS', 'PYTHON', 'PYTORCH',
             ].map((logo, idx) => (
-              <span key={`${logo}-${idx}`} className="text-3xl md:text-4xl font-black font-display tracking-tighter hover:opacity-100 transition-opacity cursor-default">
+              <span key={`${logo}-${idx}`} className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black font-display tracking-tighter hover:opacity-100 transition-opacity cursor-default">
                 {logo}
               </span>
             ))}

@@ -52,6 +52,7 @@
 /* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Three.js Canvas Container */
