@@ -55,17 +55,20 @@ const Header = () => {
                   transition={{ duration: 0.5, delay: 2.2 }}
                   className="flex items-center gap-2"
                 >
-                  <motion.div 
-                    whileHover={{ scale: 1.05, rotate: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-14 h-14 flex items-center justify-center rounded-sm overflow-hidden shadow-lg shadow-primary/10 bg-white/5 border border-white/5"
-                  >
-                    <img 
-                      src="/images/logo-04.PNG" 
-                      alt="Logo" 
-                      className="w-full h-full object-contain p-1"
-                    />
-                  </motion.div>
+                <motion.div 
+                  whileHover={{ scale: 1.05, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-14 h-14 flex items-center justify-center"
+                >
+                  <img 
+                    src="/images/logo-none.png" 
+                    alt="Logo" 
+className="w-full h-full object-contain filter 
+           drop-shadow-[0_0_14px_rgba(255,255,255,0.7)]"
+                  />
+                </motion.div>
+
+
                   <span className="font-display font-bold text-xl tracking-tight hidden sm:block">
                     {mockData.company.name}
                   </span>

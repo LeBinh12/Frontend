@@ -42,14 +42,15 @@ const Preloader = () => {
                   ease: "easeOut" 
                 }
               }}
-              className="w-32 h-32 flex items-center justify-center rounded-sm overflow-hidden shadow-2xl shadow-primary/10 bg-white/5 border border-white/5 mb-8"
+              className="w-34 h-34 flex items-center justify-center mb-8"
             >
               <img 
-                src="/images/logo-04.PNG" 
+                src="/images/logo-none.PNG" 
                 alt="Logo" 
-                className="w-full h-full object-contain p-2"
+                className="w-full h-full object-contain p-2 filter 
+           drop-shadow-[0_0_14px_rgba(255,255,255,0.7)]"
               />
-            </motion.div>
+            </motion.div> 
 
             {/* Lucidtech Text with Staggered Characters */}
             <div className="overflow-hidden flex">
