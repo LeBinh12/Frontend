@@ -29,7 +29,7 @@ const Hero = () => {
               style={{ y: yText, opacity: opacityHero }}
               className="max-w-3xl relative z-10"
             >
-              <div className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 mb-4 sm:mb-6 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-xs sm:text-sm tracking-wide">
+              <div className="inline-block px-3 sm:px-4 py-1 sm:py-2 mb-4 sm:mb-6 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-xs sm:text-sm tracking-wide">
                 {t('hero.badge')}
               </div>
               
